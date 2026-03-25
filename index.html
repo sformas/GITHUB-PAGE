@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESDC | Energy & Data Center Sustainable</title>
+    <meta
+      name="description"
+      content="Consultoría en infraestructura energética, data centers, arquitectura técnica y gestión de permisos sectoriales en Chile." />
+    <style>
+      :root {
+        --bg: #0b1320;
+        --bg-soft: #101b2d;
+        --panel: #132238;
+        --panel-2: #17304d;
+        --text: #e8eef6;
+        --muted: #a8b6c7;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #4cc9f0;
+        --accent-2: #80ed99;
+        --max: 1180px;
+        --radius: 18px;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(76, 201, 240, 0.1), transparent 28%),
+          radial-gradient(circle at top right, rgba(128, 237, 153, 0.1), transparent 24%), var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .container {
+        width: min(100% - 2rem, var(--max));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(12px);
+        background: rgba(11, 19, 32, 0.78);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: grid;
+        place-items: center;
+        color: #082032;
+        font-weight: 900;
+        box-shadow: var(--shadow);
+      }
+
+      .brand small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .menu {
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .menu a {
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .menu a:hover,
+      .menu a:focus-visible {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.2rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), #6ce0ff);
+        color: #062032;
+      }
+
+      .btn-secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        padding: 5rem 0 4rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.4rem 0.7rem;
+        border: 1px solid rgba(76, 201, 240, 0.22);
+        background: rgba(76, 201, 240, 0.08);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.15;
+        margin: 0 0 1rem;
+      }
+      h1 {
+        font-size: clamp(2.3rem, 4vw, 4.5rem);
+      }
+      h2 {
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      .lead {
+        font-size: 1.08rem;
+        color: var(--muted);
+        max-width: 64ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.6rem;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .metric,
+      .card,
+      .service,
+      .project,
+      .contact-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .metric {
+        padding: 1.1rem;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .hero-panel {
+        padding: 1.5rem;
+      }
+
+      .hero-panel .panel-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--accent-2);
+        font-weight: 600;
+        font-size: 0.88rem;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 0 6px rgba(128, 237, 153, 0.12);
+      }
+
+      .mini-list {
+        display: grid;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .mini-item {
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      section {
+        padding: 4.5rem 0;
+      }
+
+      .section-head {
+        max-width: 750px;
+        margin-bottom: 2rem;
+      }
+
+      .section-head p {
+        color: var(--muted);
+      }
+
+      .cards-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .card,
+      .service,
+      .project,
+      .contact-card {
+        padding: 1.4rem;
+      }
+
+      .card p,
+      .service p,
+      .project p,
+      .contact-card p {
+        color: var(--muted);
+        margin-bottom: 0;
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, rgba(76, 201, 240, 0.22), rgba(128, 237, 153, 0.16));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 1.2rem;
+      }
+
+      .services-grid,
+      .projects-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .service ul {
+        margin: 1rem 0 0;
+        padding-left: 1.1rem;
+        color: var(--muted);
+      }
+
+      .service li + li {
+        margin-top: 0.4rem;
+      }
+
+      .highlight {
+        padding: 1.2rem;
+        border-left: 4px solid var(--accent);
+        background: rgba(76, 201, 240, 0.08);
+        border-radius: 0 14px 14px 0;
+        color: var(--text);
+        margin-top: 1.4rem;
+      }
+
+      .contact-grid {
+        align-items: stretch;
+      }
+
+      .contact-card form {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        padding: 0.95rem 1rem;
+        color: var(--text);
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 1.5rem 0 2.4rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .footer-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .cards-3,
+        .services-grid,
+        .projects-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .menu {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="#inicio" class="brand">
+          <div class="brand-mark">E</div>
+          <div>
+            ESDC
+            <small>Energy & Data Center Sustainable</small>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Principal">
+          <a href="#nosotros">Nosotros</a>
+          <a href="modelo.html">Modelo de Negocios</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <a class="btn btn-secondary" href="#contacto">Solicitar reunión</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Consultoría técnica especializada</span>
+            <h1 style="color: white">Infraestructura energética, data centers y sustentabilidad con enfoque técnico y normativo.</h1>
+            <p class="lead">
+              Desarrollamos soluciones para proyectos de energía, edificación e infraestructura crítica, integrando diseño arquitectónico, ingeniería de
+              soporte, cumplimiento regulatorio y gestión de permisos sectoriales.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contacto">Hablemos de su proyecto</a>
+              <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
+            </div>
+
+            <div class="metrics">
+              <div class="metric">
+                <strong>Arquitectura técnica</strong>
+                <span>Desarrollo de criterios, layout, compatibilización y soporte documental.</span>
+              </div>
+              <div class="metric">
+                <strong>Permisos sectoriales</strong>
+                <span>Gestión ante DOM, SEC, SEREMI, DGA, SEA, Vialidad y otros organismos.</span>
+              </div>
+              <div class="metric">
+                <strong>Infraestructura crítica</strong>
+                <span>Apoyo a proyectos industriales, comerciales, energéticos y data centers.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-panel card">
+            <div class="panel-head">
+              <div>
+                <h3>Capacidades</h3>
+                <p style="margin: 0; color: var(--muted)">Cobertura técnica y regulatoria para etapas tempranas y de desarrollo.</p>
+              </div>
+              <div class="status">
+                <span class="dot"></span>
+                Activo
+              </div>
+            </div>
+
+            <div class="mini-list">
+              <div class="mini-item">
+                <strong>Due diligence y factibilidad</strong>
+                <br />
+                Evaluación técnica, normativa y territorial para decisiones de inversión.
+              </div>
+              <div class="mini-item">
+                <strong>Coordinación de especialidades</strong>
+                <br />
+                Integración de arquitectura, energía, urbanismo y permisos.
+              </div>
+              <div class="mini-item">
+                <strong>Estrategia de desarrollo</strong>
+                <br />
+                Ruta de habilitación, definición de alcance y soporte para gestión ejecutiva.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="nosotros">
+        <div class="container">
+          <div class="section-head">
+            <h2>Quiénes somos</h2>
+            <p>
+              Somos una consultora orientada al desarrollo de proyectos de infraestructura, con experiencia en diseño arquitectónico, gestión técnica y
+              tramitación normativa. Apoyamos a nuestros clientes en la definición temprana del proyecto, el desarrollo documental y la obtención de permisos
+              requeridos para habilitar su inversión.
+            </p>
+          </div>
+
+          <div class="cards-3">
+            <article class="card">
+              <div class="icon">01</div>
+              <h3>Visión técnica integral</h3>
+              <p>Abordamos el proyecto desde la arquitectura, la normativa, la constructibilidad y la coordinación con otras disciplinas.</p>
+            </article>
+            <article class="card">
+              <div class="icon">02</div>
+              <h3>Enfoque regulatorio</h3>
+              <p>Reducimos incertidumbre técnica mediante análisis de admisibilidad, restricciones territoriales y requisitos sectoriales.</p>
+            </article>
+            <article class="card">
+              <div class="icon">03</div>
+              <h3>Orientación al cliente</h3>
+              <p>Preparamos información clara para toma de decisiones, reuniones con autoridades y soporte documental del proyecto.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios">
+        <div class="container">
+          <div class="section-head">
+            <h2>Servicios</h2>
+            <p>Estructuramos servicios profesionales para acompañar proyectos desde la etapa conceptual hasta la habilitación regulatoria y técnica.</p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service">
+              <h3>Diseño arquitectónico y técnico</h3>
+              <p>Desarrollo de anteproyectos, criterios de diseño, compatibilización y apoyo en definición funcional del proyecto.</p>
+              <ul>
+                <li>Anteproyecto y layout general</li>
+                <li>Documentación técnica base</li>
+                <li>Apoyo a coordinación multidisciplinaria</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>Gestión de permisos sectoriales</h3>
+              <p>Planificación, preparación y seguimiento de tramitaciones requeridas para viabilizar el proyecto.</p>
+              <ul>
+                <li>DOM y normativa urbanística</li>
+                <li>SEC, SEREMI y organismos técnicos</li>
+                <li>Permisos asociados a infraestructura y operación</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>Infraestructura energética</h3>
+              <p>Apoyo a proyectos de energía, sistemas asociados y evaluación de soluciones para instalaciones críticas.</p>
+              <ul>
+                <li>Factibilidad de implantación</li>
+                <li>Revisión de requerimientos normativos</li>
+                <li>Soporte documental para desarrollo del proyecto</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>Data centers e infraestructura crítica</h3>
+              <p>Asistencia técnica para proyectos con alta exigencia de continuidad operacional, coordinación y cumplimiento.</p>
+              <ul>
+                <li>Estudios de factibilidad</li>
+                <li>Definición de alcance y estrategia</li>
+                <li>Soporte técnico para desarrollo por etapas</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="highlight">
+            Nuestro enfoque prioriza la reducción temprana de riesgos de proyecto mediante definición técnica, análisis normativo y claridad documental.
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <div class="container">
+          <div class="section-head">
+            <h2>Áreas de proyecto</h2>
+            <p>
+              Participamos en iniciativas industriales, comerciales, habitacionales, energéticas e infraestructura especializada, adaptando el alcance al tipo
+              de activo y a su ruta de aprobación.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project">
+              <h3>Industrial y comercial</h3>
+              <p>Plantas, centros logísticos, instalaciones de apoyo, ampliaciones y regularizaciones técnicas.</p>
+            </article>
+            <article class="project">
+              <h3>Energía e infraestructura</h3>
+              <p>Proyectos vinculados a sistemas energéticos, soporte territorial, implantación y cumplimiento regulatorio.</p>
+            </article>
+            <article class="project">
+              <h3>Habitacional y equipamiento</h3>
+              <p>Desarrollo documental, análisis normativo y apoyo a permisos para distintas escalas de edificación.</p>
+            </article>
+            <article class="project">
+              <h3>Infraestructura crítica</h3>
+              <p>Data centers, instalaciones de alta continuidad operacional y proyectos con fuerte componente técnico-sectorial.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <div class="container">
+          <div class="section-head">
+            <h2>Contacto</h2>
+            <p>
+              Si requiere apoyo en factibilidad, diseño, permisos o desarrollo técnico de infraestructura, podemos revisar el alcance de su proyecto y proponer
+              una ruta de trabajo.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <article class="contact-card">
+              <h3>Información de contacto</h3>
+              <p>Puede reemplazar estos datos por los definitivos de su empresa.</p>
+              <p>
+                <strong>Email:</strong>
+                contacto@tuempresa.cl
+              </p>
+              <p>
+                <strong>Teléfono:</strong>
+                +56 9 0000 0000
+              </p>
+              <p>
+                <strong>Ubicación:</strong>
+                Santiago, Chile
+              </p>
+            </article>
+
+            <article class="contact-card">
+              <h3>Formulario base</h3>
+              <form>
+                <input type="text" name="nombre" placeholder="Nombre" />
+                <input type="email" name="email" placeholder="Correo electrónico" />
+                <input type="text" name="empresa" placeholder="Empresa" />
+                <textarea name="mensaje" placeholder="Describa brevemente su proyecto"></textarea>
+                <button class="btn btn-primary" type="button">Enviar consulta</button>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-wrap">
+        <div>© 2026 ESDC | Energy & Data Center Sustainable</div>
+        <div>Consultoría en arquitectura, energía, permisos e infraestructura crítica.</div>
+      </div>
+    </footer>
+  </body>
+</html>
