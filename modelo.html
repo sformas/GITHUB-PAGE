@@ -4,189 +4,324 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Business Model Canvas - Infraestructura Energética Chile</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+
     <style>
-      body {
-        /* background: #f6f8fb; */
+      :root {
+        --canvas-border: #dfe5ec;
+        --canvas-title: #0f172a;
+        --canvas-bg: #fff7f7;
+        --canvas-highlight: #fbfb0365;
+        --canvas-blue: #e2effc;
+        --canvas-gray: #dfdfdf;
       }
 
-      /* .canvas-wrapper {
-      overflow-x: auto;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-    } */
+      body {
+        background: #f6f8fb;
+      }
+
+      main {
+        width: min(100% - 2rem, 1400px);
+        margin-inline: auto;
+        padding-block: 2rem;
+      }
+
+      hgroup {
+        text-align: center;
+      }
+
+      hgroup h2,
+      hgroup h3 {
+        margin-bottom: 0.4rem;
+      }
+
+      .lead {
+        max-width: 900px;
+        margin-inline: auto;
+        text-align: center;
+        font-size: 1rem;
+        color: #334155;
+      }
+
+      .canvas-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
 
       table.canvas {
         width: 100%;
-        /* min-width: 1200px; */
         border-collapse: collapse;
-        /* table-layout: fixed; */
         background: white;
-        /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); */
         border-radius: 12px;
-        /* overflow: hidden; */
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
       }
 
       .canvas th,
       .canvas td {
-        border: 1px solid #dfe5ec;
+        border: 1px solid var(--canvas-border);
         vertical-align: top;
         padding: 1rem;
-        font-size: 0.75rem;
+        font-size: 0.78rem;
         line-height: 1.5;
       }
 
       .canvas th {
-        background: #0f172a;
+        background: var(--canvas-title);
         color: white;
         text-align: center;
-        font-size: 0.75rem;
+        font-size: 0.78rem;
+        font-weight: 700;
       }
 
       .canvas td {
-        background: #fff7f7;
+        background: var(--canvas-bg);
       }
 
       .canvas ul {
-        margin-bottom: 0;
+        margin: 0;
         padding-left: 1rem;
       }
 
-      .canvas .wide1 {
-        background: #dfdfdf;
+      .canvas li {
+        margin-bottom: 0.45rem;
       }
+
+      .canvas .wide1,
       .canvas .wide2 {
-        background: #dfdfdf;
+        background: var(--canvas-gray);
       }
 
       .canvas .highlight {
-        background: #fbfb0365;
+        background: var(--canvas-highlight);
       }
 
       .canvas .costs,
       .canvas .revenue {
-        background: #e2effc;
+        background: var(--canvas-blue);
       }
 
-      h1,
-      p.lead {
-        text-align: center;
-        font-size: 0.9rem;
-        margin-bottom: 2rem;
-      }
-
-      .note {
+      .note,
+      .canvas-footer {
         font-size: 0.9rem;
         color: #475569;
         text-align: center;
         margin-top: 0.5rem;
       }
+
+      /* =========================
+         RESPONSIVE PARA CELULAR
+         ========================= */
+      @media (max-width: 768px) {
+        main {
+          width: min(100% - 1rem, 100%);
+          padding-block: 1rem;
+        }
+
+        hgroup h2 {
+          font-size: 1.35rem;
+        }
+
+        hgroup h3 {
+          font-size: 1rem;
+        }
+
+        .lead {
+          font-size: 0.9rem;
+          text-align: left;
+        }
+
+        .canvas-wrapper {
+          overflow-x: visible;
+          margin-top: 1.25rem;
+        }
+
+        table.canvas,
+        .canvas tbody,
+        .canvas tr,
+        .canvas td {
+          display: block;
+          width: 100%;
+        }
+
+        .canvas thead,
+        .canvas th {
+          display: none;
+        }
+
+        .canvas tr {
+          margin-bottom: 1rem;
+        }
+
+        .canvas td {
+          border: 1px solid var(--canvas-border);
+          border-radius: 12px;
+          margin-bottom: 1rem;
+          padding: 1rem;
+          font-size: 0.88rem;
+          line-height: 1.55;
+          box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+        }
+
+        .canvas td::before {
+          content: attr(data-label);
+          display: block;
+          background: var(--canvas-title);
+          color: white;
+          font-weight: 700;
+          text-align: center;
+          padding: 0.65rem;
+          margin: -1rem -1rem 1rem -1rem;
+          border-radius: 12px 12px 0 0;
+          font-size: 0.9rem;
+        }
+
+        .canvas td[colspan] {
+          width: 100%;
+        }
+
+        .canvas ul {
+          padding-left: 1.1rem;
+        }
+
+        .canvas li {
+          margin-bottom: 0.6rem;
+        }
+
+        .canvas-footer {
+          text-align: left;
+          font-size: 0.85rem;
+        }
+      }
     </style>
   </head>
-  <body>
-      <div>
-        <section>
-          <hgroup style="text-align: center;">
-            <h2>Modelo de Negocios</h2>
-            <p>Energy & Sustainable Data Center(ESDC)</p>
-          <p class="note">En el contexto regulatorio y técnico para Infraestructuras de Misión Crítica en Chile.</p>
-          </hgroup>
 
-          <div class="canvas-wrapper">
-            <table class="canvas">
-              <tr>
-                <th>Socios clave</th>
-                <th>Actividades clave</th>
-                <th>Propuesta de valor</th>
-                <th>Relaciones con clientes</th>
-                <th>Segmentos de clientes</th>
-              </tr>
-              <tr>
-                <td>
-                  <ul>
-                    <li>Empresas EPC e ingenierías especializadas (eléctrica, civil, ambiental).</li>
-                    <li>Instituciones públicas: SEC, DGA, SEA, DOM, Vialidad, SEREMI Salud, MMA.</li>
-                    <li>Consultoras: Permisos, legales y ambientales.</li>
-                    <li>Universidades y centros tecnológicos en energía renovable.</li>
-                    <li>Vendor equipos electricos, mecánicos relacionados con ERNC y Data Centers.</li>
-                    <li>Partners estratégicos en JV: Generadoras; Desarrolladores; </li>
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    <li>Estudio y análisis normativo: uso de suelo, servidumbres, factibilidad de conexión.</li>
-                    <li>Elaboración de informes y memorias técnicas de arquitectura, instalaciones y seguridad.</li>
-                    <li>Coordinación interdisciplinaria de proyectos EPC, O&amp;M y JV.</li>
-                    <li>Preparación de matrices de permisos y cronogramas de cumplimiento.</li>
-                    <li>Apoyo a modelado financiero y due diligence técnica.</li>
-                    <li>Integración de normas internacionales: NFPA, ISO, IFC, LEED, BREEAM.</li>
-                  </ul>
-                </td>
-                <td class="highlight">
-                  <ul>
-                    <li>Desarrollo integral de infraestructura energética: generación, almacenamiento, carga eléctrica Infraestructura de Misión Crítica</li>
-                    <li>Diseño arquitectónico y técnico conforme a normativa chilena: LGUC, OGUC, DS 43/2015, DS 594/99, DS 160/2008, entre otras.</li>
-                    <li>Gestión de permisos sectoriales: SEC, DGA, SEA, DOM, SEREMI Salud, Vialidad.</li>
-                    <li>Optimización del CAPEX mediante diseño eficiente y modular.</li>
-                    <li>Aseguramiento de cumplimiento ESG y criterios de sustentabilidad.</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    <li>Relación de asesor estratégico y socio técnico durante todo el ciclo del proyecto.</li>
-                    <li>Participación temprana en prefactibilidad y diseño conceptual.</li>
-                    <li>Estudios normativos, matrices de permisos y seguimiento digital de cumplimiento.</li>
-                    <li>Confidencialidad y transparencia contractual mediante NDA, JV o contratos marco.</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    <li>Empresas de energía y combustibles: COPEC, Enel, Colbún, Engie, Sonnedix.</li>
-                    <li>Data centers e industrias intensivas en energía: TI, minería, alimentos, manufactura.</li>
-                    <li>Gobiernos locales y regionales.</li>
-                    <li>Inversionistas o fondos de infraestructura que buscan activos regulados.</li>
-                    <li>Operadores logísticos, retail o transporte con infraestructura eléctrica, BESS o H2 verde.</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <th colspan="2">Estructura de costos</th>
-                <th colspan="1">Recursos clave</th>
-                <th colspan="2">Fuentes de ingreso</th>
-              </tr>
-              <tr>
-                <td colspan="2" class="costs wide">
-                  <ul>
-                    <li>Recursos humanos técnicos y administrativos.</li>
-                    <li>Costos de software, licencias y herramientas digitales.</li>
-                    <li>Gastos de terreno, viajes y reuniones con organismos públicos.</li>
-                    <li>Asesorías externas: ambiental, legal y eléctrica.</li>
-                    <li>Costos indirectos: comunicaciones, mantenimiento y seguros profesionales.</li>
-                  </ul>
-                </td>
-                <td class="wide1">
-                  <ul>
-                    <li>Conocimiento experto en normativa sectorial: energía, medio ambiente y construcción.</li>
-                    <li>Metodología Word class para entregables técnicos estructurados.</li>
-                    <li>Red profesional multidisciplinaria experta: eléctricos, mecánicos, civiles y legales.</li>
-                    <li>Software especializado: AutoCAD, Revit, QGIS, Civil.</li>
-                    <li>Experiencia acumulada en proyectos energéticos e infraestructura industriales.</li>
-                  </ul>
-                </td>
-                <td colspan="2" class="revenue wide">
-                  <ul>
-                    <li>Honorarios por servicios profesionales: consultoría, diseño, gestión de permisos, sustentabilidad.</li>
-                    <li>Contratos Estudios de factibilidad, tramitación Sectorial y regularización normativa.</li>
-                    <li>Revenue share con partners EPC o desarrolladores.</li>
-                    <li>Auditorías normativas y de cumplimiento ESG.</li>
-                    <li>Servicios post-implementación: as built e informes de cumplimiento operacional.</li>
-                  </ul>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <p class="note">
-            La estructura tabular permite visualizar de forma compacta los nueve bloques del canvas, manteniendo una lectura clara para contextos ejecutivos y técnicos.
-          </p>
+  <body>
+    <main>
+      <section>
+        <hgroup>
+          <h2>Business Model Canvas</h2>
+          <h3>Infraestructura Energética ERNC para DATA CENTER - Chile</h3>
+        </hgroup>
+
+        <p class="lead">
+          Estructura del modelo de negocios ESDATA (Osterwalder), en el contexto regulatorio y técnico para Infraestructuras de Misión Crítica.
+        </p>
+
+        <div class="canvas-wrapper">
+          <table class="canvas">
+            <tr>
+              <th>Socios clave</th>
+              <th>Actividades clave</th>
+              <th>Propuesta de valor</th>
+              <th>Relaciones con clientes</th>
+              <th>Segmentos de clientes</th>
+            </tr>
+
+            <tr>
+              <td data-label="Socios clave">
+                <ul>
+                  <li>Empresas EPC e ingenierías especializadas: eléctrica, civil.</li>
+                  <li>Instituciones públicas: SEC, DGA, SEA, DOM, Vialidad, SEREMI Salud y MMA.</li>
+                  <!-- <li>Consultoras de permisos, legales y ambientales.</li> -->
+                  <li>Universidades y centros tecnológicos en energía renovable.</li>
+                  <li>Partners estratégicos en JV: Data centers, generadoras y desarrolladores.</li>
+                </ul>
+              </td>
+
+              <td data-label="Actividades clave">
+                <ul>
+                  <li>Estudio y análisis normativo: uso de suelo, servidumbres y factibilidad de conexión.</li>
+                  <li>Elaboración de informes y memorias técnicas de arquitectura, instalaciones y seguridad.</li>
+                  <li>Coordinación interdisciplinaria de proyectos EPC, O&amp;M y JV.</li>
+                  <li>Preparación de matrices de permisos y cronogramas de cumplimiento.</li>
+                  <li>Apoyo a modelado financiero y due diligence técnica.</li>
+                  <li>Integración de normas internacionales: NFPA, ISO, IFC, LEED y BREEAM.</li>
+                </ul>
+              </td>
+
+              <td class="highlight" data-label="Propuesta de valor">
+                <ul>
+                  <li>
+                    Desarrollo integral de infraestructura energética: territorio ;generación - almacenamiento(BTM); conexión eléctrica e infraestructura de
+                    misión crítica.
+                  </li>
+                  <li>Diseño arquitectónico y técnico conforme a normativa chilena: LGUC, OGUC, DS 43/2015, DS 594/99, DS 160/2008, entre otras.</li>
+                  <li>Gestión de permisos sectoriales integrados: SEC, DGA, SEA, DOM, SEREMI Salud y Vialidad.</li>
+                  <li>Optimización del CAPEX mediante diseño eficiente y modular.</li>
+                  <li>Aseguramiento de cumplimiento ESG y criterios de sustentabilidad.</li>
+                </ul>
+              </td>
+
+              <td data-label="Relaciones con clientes">
+                <ul>
+                  <li>Relación de asesor estratégico y socio técnico durante todo el ciclo del proyecto.</li>
+                  <li>Participación temprana en Factibilidad y diseño conceptual.</li>
+                  <li>Estudios normativos, matrices de permisos y seguimiento de cumplimiento.</li>
+                  <li>Confidencialidad y transparencia contractual mediante NDA, JV o contratos marco.</li>
+                </ul>
+              </td>
+
+              <td data-label="Segmentos de clientes">
+                <ul>
+                  <li>Empresas de energía y combustibles: COPEC, Enel, Colbún, Engie y Sonnedix.</li>
+                  <li>Data centers e industrias intensivas en energía: TI, minería, alimentos y manufactura.</li>
+                  <li>Gobiernos locales y regionales.</li>
+                  <li>Inversionistas o fondos de infraestructura que buscan activos regulados.</li>
+                  <li>Operadores de infraestructura eléctrica, BESS.</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <th colspan="2">Estructura de costos</th>
+              <th>Recursos clave</th>
+              <th colspan="2">Fuentes de ingreso</th>
+            </tr>
+
+            <tr>
+              <td colspan="2" class="costs wide" data-label="Estructura de costos">
+                <ul>
+                  <li>Recursos humanos técnicos y administrativos.</li>
+                  <li>Costos de software, licencias y herramientas digitales.</li>
+                  <li>Gastos de terreno, viajes y reuniones con organismos públicos.</li>
+                  <li>Asesorías externas: MEP y conexión eléctrica.</li>
+                  <li>Costos indirectos: comunicaciones, mantenimiento y seguros profesionales.</li>
+                </ul>
+              </td>
+
+              <td class="wide1" data-label="Recursos clave">
+                <ul>
+                  <li>Conocimiento experto en normativa sectorial: energía, medio ambiente - construcción, recursos naturales.</li>
+                  <li>Metodología world class para entregables técnicos estructurados.</li>
+                  <li>Red profesional multidisciplinaria: especialistas eléctricos, mecánicos, civiles y legales.</li>
+                  <li>Software especializado: AutoCAD, Revit, QGIS y Civil.</li>
+                  <li>Experiencia acumulada en proyectos energéticos e infraestructura industrial.</li>
+                </ul>
+              </td>
+
+              <td colspan="2" class="revenue wide" data-label="Fuentes de ingreso">
+                <ul>
+                  <li>Honorarios por servicios profesionales: consultoría, diseño, gestión de permisos y sustentabilidad.</li>
+                  <li>Contratos de estudios de factibilidad, tramitación sectorial y regularización normativa.</li>
+                  <li>Contratos de arriendo o venta de terrenos para proyectos de datacenters.</li>
+                  <li>Revenue share con partners EPC o desarrolladores.</li>
+                  <li>Auditorías normativas y de cumplimiento ESG.</li>
+                  <li>Servicios post-implementación: as built e informes de cumplimiento operacional.</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <p class="canvas-footer">
+          La estructura tabular permite visualizar de forma compacta los nueve bloques del canvas, manteniendo una lectura clara para contextos ejecutivos y
+          técnicos.
+        </p>
+      </section>
+    </main>
   </body>
 </html>
